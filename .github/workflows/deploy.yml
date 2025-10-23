@@ -1,9 +1,9 @@
-name: Deploy to GitHub Pages (pages branch)
+name: Deploy to GitHub Pages (pages)
 
 on:
   push:
-    branches: [pages]
-  workflow_dispatch:
+    branches: [pages] # <— deploy only when you push to `pages`
+  workflow_dispatch: # <— allow manual runs from Actions tab
 
 permissions:
   contents: read
@@ -25,7 +25,7 @@ jobs:
           cache: "npm"
       - run: npm ci
       - run: npm run build
-      - run: cp build/index.html build/404.html # harmless even without a router
+      - run: cp build/index.html build/404.html
       - uses: actions/upload-pages-artifact@v3
         with:
           path: ./build

@@ -18,7 +18,7 @@ export default function Contact() {
               <div className="font-semibold group-hover:text-red-400 transition-colors font-mono">adithharinarayanan@gmail.com</div>
             </div>
           </a>
-          <a href="tel:+17653506325" className="group bg-gray-950 border border-cyan-500/30 rounded-2xl p-6 hover:bg-gray-900 hover:scale-105 hover:shadow-[0_0_30px_rgba(6,182,212,0.3)] hover:border-cyan-400/60 transition-all duration-500 flex items-center gap-4 cursor-pointer">
+          <a href="tel:+1" className="group bg-gray-950 border border-cyan-500/30 rounded-2xl p-6 hover:bg-gray-900 hover:scale-105 hover:shadow-[0_0_30px_rgba(6,182,212,0.3)] hover:border-cyan-400/60 transition-all duration-500 flex items-center gap-4 cursor-pointer">
             <Phone className="w-6 h-6 text-cyan-400 group-hover:scale-125 group-hover:rotate-12 transition-all duration-500" />
             <div className="text-left">
               <div className="text-sm text-gray-500 group-hover:text-gray-400 transition-colors font-mono">Phone</div>

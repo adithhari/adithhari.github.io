@@ -1,30 +1,62 @@
-import React, { useState, useEffect } from 'react';
-import { Github, Linkedin, Mail, Phone, MapPin, Code2, Briefcase, Award, ExternalLink, Coffee, Sparkles, Database, Cloud, Terminal } from 'lucide-react';
+import React, { useState } from 'react';
+import { Github, Linkedin, Mail, Phone, MapPin, Code2, Briefcase, Award, ExternalLink, Coffee, Sparkles, Database, Cloud, Terminal, X } from 'lucide-react';
 
 export default function ProfessionalPortfolio() {
-  const [scrollY, setScrollY] = useState(0);
-  const [activeSection, setActiveSection] = useState('home');
+  const [selectedExperience, setSelectedExperience] = useState(null);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isClosing, setIsClosing] = useState(false);
 
-  useEffect(() => {
-    const handleScroll = () => {
-      setScrollY(window.scrollY);
-    };
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
+  const handleCloseModal = () => {
+    setIsClosing(true);
+    setTimeout(() => {
+      setIsModalOpen(false);
+      setIsClosing(false);
+    }, 500);
+  };
 
   const experiences = [
+    {
+      role: "Software Developer (Research Assistant)",
+      company: "Global Health Impact Project",
+      location: "Indiana University",
+      period: "Oct 2025 – Present",
+      highlights: [
+        "Handled migration of a legacy Flask platform to a modern Next.js full-stack architecture, modernizing 40+ components",
+        "Maintain and enhance production-grade Flask applications supporting global health analytics workflows",
+        "Optimized system performance by implementing code splitting and dynamic imports, reducing page load time ~45%",
+        "Reduced CI/CD build times by ~64% through incremental compilation and environment-based configurations",
+        "Built Python-based automation scripts (Bash + Python) to streamline build and release workflows",
+        "Developed and maintained CI/CD pipelines using Jenkins for automated build, test, and deployment of full-stack services",
+        "Collaborated cross-functionally to improve build reliability and reduce deployment failures"
+      ]
+    },
     {
       role: "Software Developer",
       company: "Cognizant",
       location: "Chennai, India",
-      period: "Aug 2022 - Jun 2024"
+      period: "Aug 2022 - Jun 2024",
+      highlights: [
+        "Built 10+ high-availability, multi-threaded ASP.NET Core APIs for an EdTech platform serving ~95% of U.S. schools",
+        "Improved system reliability ~20% through production debugging, root-cause analysis, and performance optimization",
+        "Optimized backend performance ~25% via SQL query tuning, caching strategies, and efficient memory usage",
+        "Implemented RESTful services over Kafka, optimizing request handling for lower latency and improved throughput",
+        "Led migration from SQL Server to PostgreSQL, redesigning schemas and optimizing indexing strategies for scalability",
+        "Debugged and resolved complex production issues involving concurrency, database locking, and high-load scenarios",
+        "Monitored production systems using logging and metrics tools and resolved high-priority incidents during on-call rotations",
+        "Collaborated in an Agile/Scrum environment with sprint planning, code reviews, and retrospective cycles"
+      ]
     },
     {
       role: "SDE Intern",
       company: "Cognizant",
       location: "Chennai, India",
-      period: "Jan 2022 - Aug 2022"
+      period: "Jan 2022 - Aug 2022",
+      highlights: [
+        "Designed and deployed 4 event-driven ASP.NET Core microservices using Kafka, Docker, and Kubernetes in Azure Cloud",
+        "Architected distributed, event-driven services following producer-consumer architecture patterns",
+        "Containerized services using Docker and orchestrated deployments with Kubernetes, maintaining 99.9% uptime",
+        "Deployed and monitored services on Microsoft Azure following secure cloud best practices"
+      ]
     }
   ];
 
@@ -42,7 +74,23 @@ export default function ProfessionalPortfolio() {
         "Visualized interactive mind-maps with React and D3.js"
       ],
       gradient: "from-red-600 to-cyan-600",
-      github: null
+      github: "https://github.com/adithhari/Mana.ai"
+    },
+    {
+      title: "CDPH Food Inspections Dashboard",
+      award: "Full-Stack Analytics Project",
+      date: "Aug 2025 - Dec 2025",
+      description: "Production-ready analytics platform for 500,000+ food inspections across 47,494+ Chicago facilities",
+      tech: ["React 19", "TypeScript", "Node.js", "Express", "PostgreSQL", "Chart.js", "Plotly.js", "Material-UI"],
+      highlights: [
+        "Designed 27+ REST API endpoints with advanced search, filtering, and pagination",
+        "Built medallion-architecture ETL pipeline (Bronze → Silver → Gold) for data ingestion and processing",
+        "Created 6+ interactive visualizations with Chart.js, Plotly, and Leaflet maps",
+        "Implemented full CRUD operations with normalized 5-table PostgreSQL schema and FK constraints",
+        "Integrated React Query (TanStack) for efficient server state management and caching"
+      ],
+      gradient: "from-purple-600 to-blue-600",
+      github: "https://github.com/adithhari/CDPH-foodinspections"
     },
     {
       title: "TinkerPad: LLM Document Summarizer",
@@ -127,19 +175,16 @@ export default function ProfessionalPortfolio() {
             </div>
           </div>
 
-          <h1 className="text-3xl sm:text-4xl md:text-6xl lg:text-7xl xl:text-8xl font-bold mb-6 font-mono whitespace-nowrap flex justify-center">
-            <span className="inline-flex">
-              {/* {['A', 'D', 'I', 'T', 'H', ' ', 'H', 'A', 'R', 'I', 'N', 'A', 'R', 'A', 'Y', 'A', 'N', 'A', 'N'].map((letter, i) => ( */}
-              {['ADITH', ' ', 'HARINARAYANAN'].map((letter, i) => (
-                <span 
-                  key={i} 
-                  className="inline-block hover:text-red-500 hover:scale-125 hover:-translate-y-2 transition-all duration-300 cursor-default"
-                  style={{ textShadow: '0 0 10px rgba(239, 68, 68, 0.5)' }}
-                >
-                  {letter === ' ' ? '\u00A0' : letter}
-                </span>
-              ))}
-            </span>
+          <h1 className="text-3xl sm:text-4xl md:text-6xl lg:text-7xl xl:text-8xl font-bold mb-6 font-mono whitespace-nowrap">
+            {['A', 'D', 'I', 'T', 'H', ' ', 'H', 'A', 'R', 'I', 'N', 'A', 'R', 'A', 'Y', 'A', 'N', 'A', 'N'].map((letter, i) => (
+              <span 
+                key={i} 
+                className="inline-block hover:text-red-500 hover:scale-125 hover:-translate-y-2 transition-all duration-300 cursor-default"
+                style={{ textShadow: '0 0 10px rgba(239, 68, 68, 0.5)' }}
+              >
+                {letter === ' ' ? '\u00A0' : letter}
+              </span>
+            ))}
           </h1>
 
           <div className="flex items-center justify-center gap-3 text-xl md:text-2xl text-gray-300 mb-8">
@@ -148,10 +193,10 @@ export default function ProfessionalPortfolio() {
           </div>
 
           <p className="text-xl md:text-2xl text-gray-400 mb-12 max-w-3xl mx-auto">
-            MS in Computer Science @ Indiana University<br/>
+            MS in Computer Science @ Indiana University Bloomington<br/>
             Full-Stack Developer | AI Enthusiast | Data Science Explorer
           </p>
- 
+
           <div className="flex flex-wrap gap-4 justify-center mb-12">
             <a href="#contact" className="group px-8 py-4 bg-gradient-to-r from-red-600 to-red-800 rounded-full font-semibold hover:scale-110 hover:shadow-[0_0_30px_rgba(239,68,68,0.6)] transition-all duration-300 relative overflow-hidden font-mono">
               <span className="relative z-10">Get In Touch</span>
@@ -187,7 +232,7 @@ export default function ProfessionalPortfolio() {
               <Sparkles className="w-10 h-10 text-red-500 hover:scale-125 hover:rotate-12 transition-all duration-300 cursor-pointer" />
               About Me
             </h2>
-            {/* <p className="text-xl text-gray-400">Passionate about solving complex problems with innovative solutions</p> */}
+            <p className="text-xl text-gray-400">Passionate about solving complex problems with innovative solutions</p>
           </div>
 
           <div className="max-w-4xl mx-auto mb-20">
@@ -208,7 +253,7 @@ export default function ProfessionalPortfolio() {
               <Code2 className="w-12 h-12 text-red-500 hover:scale-125 hover:rotate-12 transition-all duration-300 cursor-pointer" />
               Technical Arsenal
             </h3>
-            <p className="text-xl text-gray-400 text-center mb-16 font-mono">Technologies I have worked with to build amazing solutions</p>
+            <p className="text-xl text-gray-400 text-center mb-16 font-mono">Technologies I work with to build amazing solutions</p>
             
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
               {/* Languages */}
@@ -324,7 +369,13 @@ export default function ProfessionalPortfolio() {
 
                   {/* Content Card */}
                   <div className={`ml-20 md:ml-0 md:w-5/12 ${i % 2 === 0 ? 'md:mr-auto md:pr-12' : 'md:ml-auto md:pl-12'}`}>
-                    <div className="group bg-gradient-to-br from-gray-950 to-black backdrop-blur-sm border border-cyan-500/30 rounded-2xl p-6 hover:scale-105 hover:shadow-[0_0_40px_rgba(6,182,212,0.3)] hover:border-cyan-400/60 transition-all duration-500 cursor-pointer">
+                    <div 
+                      onClick={() => {
+                        setSelectedExperience(exp);
+                        setIsModalOpen(true);
+                      }}
+                      className="group bg-gradient-to-br from-gray-950 to-black backdrop-blur-sm border border-cyan-500/30 rounded-2xl p-6 hover:scale-105 hover:shadow-[0_0_40px_rgba(6,182,212,0.3)] hover:border-cyan-400/60 transition-all duration-500 cursor-pointer"
+                    >
                       {/* Date Badge */}
                       <div className="inline-block px-4 py-1 bg-red-950/50 border border-red-700/50 rounded-full text-sm text-red-400 font-semibold mb-3 group-hover:bg-red-900/60 group-hover:border-red-500/60 transition-colors font-mono">
                         {exp.period}
@@ -493,6 +544,51 @@ export default function ProfessionalPortfolio() {
           <p className="hover:text-red-400 transition-colors duration-300 cursor-default font-mono">© 2025 Adith Harinarayanan • Converting caffeine to code since 2016</p>
         </div>
       </footer>
+
+      {/* Experience Modal */}
+      {isModalOpen && selectedExperience && (
+        <div 
+          onClick={handleCloseModal}
+          className={`fixed inset-0 bg-black/40 backdrop-blur-md z-50 flex items-center justify-center p-6 ${isClosing ? 'animate-fadeOut' : 'animate-fadeIn'}`}
+        >
+          <div 
+            onClick={(e) => e.stopPropagation()}
+            className={`bg-gradient-to-br from-gray-900 to-black border border-cyan-500/50 rounded-3xl max-w-3xl w-full max-h-[90vh] overflow-y-auto shadow-2xl ${isClosing ? 'animate-slideOut' : 'animate-slideIn'}`}
+          >
+            {/* Modal Header */}
+            <div className="sticky top-0 flex items-start justify-between p-8 border-b border-cyan-500/30 bg-black/50 backdrop-blur-sm">
+              <div className="flex-1">
+                <h2 className="text-3xl font-bold text-white mb-2 font-mono">{selectedExperience.role}</h2>
+                <p className="text-cyan-400 font-semibold mb-1 font-mono">{selectedExperience.company}</p>
+                <div className="flex items-center gap-2 text-gray-400 font-mono">
+                  <MapPin className="w-4 h-4" />
+                  {selectedExperience.location}
+                </div>
+                <p className="text-red-400 font-mono text-sm mt-2">{selectedExperience.period}</p>
+              </div>
+              <button
+                onClick={handleCloseModal}
+                className="text-gray-400 hover:text-white transition-colors ml-4 flex-shrink-0"
+              >
+                <X className="w-8 h-8" />
+              </button>
+            </div>
+
+            {/* Modal Content */}
+            <div className="p-8">
+              <h3 className="text-xl font-bold text-cyan-400 mb-4 font-mono">Achievements & Responsibilities</h3>
+              <ul className="space-y-3">
+                {selectedExperience.highlights.map((highlight, idx) => (
+                  <li key={idx} className="flex gap-3 items-start text-gray-300 font-mono text-sm leading-relaxed">
+                    <span className="text-red-500 font-bold mt-1">•</span>
+                    <span>{highlight}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 }

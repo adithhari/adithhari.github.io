@@ -1,5 +1,8 @@
 import React, { useState } from 'react';
 import { Github, Linkedin, Mail, Phone, MapPin, Code2, Briefcase, Award, ExternalLink, Coffee, Sparkles, Database, Cloud, Terminal, X } from 'lucide-react';
+import { skills } from './data/skills';
+import { experiences } from './data/experiences';
+import { projects } from './data/projects';
 
 export default function ProfessionalPortfolio() {
   const [selectedExperience, setSelectedExperience] = useState(null);
@@ -14,135 +17,10 @@ export default function ProfessionalPortfolio() {
     }, 500);
   };
 
-  const experiences = [
-    {
-      role: "Software Developer (Research Assistant)",
-      company: "Global Health Impact Project",
-      location: "Indiana University",
-      period: "Oct 2025 – Present",
-      highlights: [
-        "Handled migration of a legacy Flask platform to a modern Next.js full-stack architecture, modernizing 40+ components",
-        "Maintain and enhance production-grade Flask applications supporting global health analytics workflows",
-        "Optimized system performance by implementing code splitting and dynamic imports, reducing page load time ~45%",
-        "Reduced CI/CD build times by ~64% through incremental compilation and environment-based configurations",
-        "Built Python-based automation scripts (Bash + Python) to streamline build and release workflows",
-        "Developed and maintained CI/CD pipelines using Jenkins for automated build, test, and deployment of full-stack services",
-        "Collaborated cross-functionally to improve build reliability and reduce deployment failures"
-      ]
-    },
-    {
-      role: "Software Developer",
-      company: "Cognizant",
-      location: "Chennai, India",
-      period: "Aug 2022 - Jun 2024",
-      highlights: [
-        "Built 10+ high-availability, multi-threaded ASP.NET Core APIs for an EdTech platform serving ~95% of U.S. schools",
-        "Improved system reliability ~20% through production debugging, root-cause analysis, and performance optimization",
-        "Optimized backend performance ~25% via SQL query tuning, caching strategies, and efficient memory usage",
-        "Implemented RESTful services over Kafka, optimizing request handling for lower latency and improved throughput",
-        "Led migration from SQL Server to PostgreSQL, redesigning schemas and optimizing indexing strategies for scalability",
-        "Debugged and resolved complex production issues involving concurrency, database locking, and high-load scenarios",
-        "Monitored production systems using logging and metrics tools and resolved high-priority incidents during on-call rotations",
-        "Collaborated in an Agile/Scrum environment with sprint planning, code reviews, and retrospective cycles"
-      ]
-    },
-    {
-      role: "SDE Intern",
-      company: "Cognizant",
-      location: "Chennai, India",
-      period: "Jan 2022 - Aug 2022",
-      highlights: [
-        "Designed and deployed 4 event-driven ASP.NET Core microservices using Kafka, Docker, and Kubernetes in Azure Cloud",
-        "Architected distributed, event-driven services following producer-consumer architecture patterns",
-        "Containerized services using Docker and orchestrated deployments with Kubernetes, maintaining 99.9% uptime",
-        "Deployed and monitored services on Microsoft Azure following secure cloud best practices"
-      ]
-    }
-  ];
-
-  const projects = [
-    {
-      title: "Mana.ai: AI Meeting Co-pilot",
-      award: "1st Runner-Up, Luddy Hackathon '25",
-      date: "Feb 2025",
-      description: "Real-time meeting transcription with emotion analysis and automated action items",
-      tech: ["WebRTC", "Google Meet API", "Hume AI", "React", "D3.js", "Supabase", "NLP"],
-      highlights: [
-        "Built real-time transcription using WebRTC and Google Meet API",
-        "Implemented speaker diarization and emotion analysis with Hume AI",
-        "Automated NLP workflows to generate summaries and Trello action items",
-        "Visualized interactive mind-maps with React and D3.js"
-      ],
-      gradient: "from-red-600 to-cyan-600",
-      github: "https://github.com/adithhari/Mana.ai"
-    },
-    {
-      title: "CDPH Food Inspections Dashboard",
-      award: "Full-Stack Analytics Project",
-      date: "Aug 2025 - Dec 2025",
-      description: "Production-ready analytics platform for 500,000+ food inspections across 47,494+ Chicago facilities",
-      tech: ["React 19", "TypeScript", "Node.js", "Express", "PostgreSQL", "Chart.js", "Plotly.js", "Material-UI"],
-      highlights: [
-        "Designed 27+ REST API endpoints with advanced search, filtering, and pagination",
-        "Built medallion-architecture ETL pipeline (Bronze → Silver → Gold) for data ingestion and processing",
-        "Created 6+ interactive visualizations with Chart.js, Plotly, and Leaflet maps",
-        "Implemented full CRUD operations with normalized 5-table PostgreSQL schema and FK constraints",
-        "Integrated React Query (TanStack) for efficient server state management and caching"
-      ],
-      gradient: "from-purple-600 to-blue-600",
-      github: "https://github.com/adithhari/CDPH-foodinspections"
-    },
-    {
-      title: "TinkerPad: LLM Document Summarizer",
-      award: "2nd Runner-Up, Luddy Hackathon '24",
-      date: "Aug 2024",
-      description: "AI-powered document summarization tool with transformer models",
-      tech: ["Flask", "React", "Hugging Face", "BART", "T5", "Docker", "AWS EC2"],
-      highlights: [
-        "Designed summarization tool with Flask, ReactJS, and Hugging Face transformers",
-        "Applied BART and T5 models to compress documents by ~70%",
-        "Deployed Dockerized APIs on AWS EC2 with <2s response time"
-      ],
-      gradient: "from-cyan-600 to-red-600",
-      github: "https://github.com/adithhari/Document-Summarizer"
-    },
-    {
-      title: "PneumoNetFusion: Pneumonia Detection",
-      award: "Research Project",
-      date: "Jan 2024 - Apr 2024",
-      description: "Ensemble CNN network for chest X-ray pneumonia detection",
-      tech: ["Python", "TensorFlow", "GANs", "CNN", "Computer Vision"],
-      highlights: [
-        "Enhanced dataset with 5,000+ synthetic X-rays via GANs",
-        "Trained ensemble of custom CNNs achieving 93% detection accuracy",
-        "Improved detection by 15% through image refinement and data augmentation"
-      ],
-      gradient: "from-red-600 to-red-900",
-      github: "https://github.com/adithhari/XRay-Classifier"
-    },
-    {
-      title: "COVID-19 Screening System",
-      award: "IoT Project",
-      date: "2021",
-      description: "IoT-based COVID-19 safety screening system with automated temperature detection",
-      tech: ["Python", "IoT", "Raspberry Pi", "Sensors"],
-      highlights: [
-        "Built automated screening system for public safety",
-        "Integrated temperature sensors and facial recognition",
-        "Deployed in real-world settings for contactless screening"
-      ],
-      gradient: "from-cyan-600 to-gray-900",
-      github: "https://github.com/adithhari/Covid-19-screening-system"
-    }
-  ];
-
-  const skills = {
-    languages: ["Python", "JavaScript", "C#", "TypeScript", "Java", "C++", "C", "R", "HTML", "CSS"],
-    frameworks: ["ASP.NET", "React", "Angular", "SpringBoot", "NestJS", "Express", "EF Core", "LINQ"],
-    databases: ["PostgreSQL", "MySQL", "SQL Server", "MongoDB", "Redis", "Neo4J", "Firebase", "DynamoDB"],
-    cloud: ["AWS EC2", "Lambda", "S3", "RDS", "CloudFront", "Azure", "Docker", "Kubernetes"],
-    tools: ["Git", "Jira", "Jenkins", "TeamCity", "Postman", "TensorFlow", "Datadog", "Trello"]
-  };
+  // Data imported from separate files:
+  // - experiences from './data/experiences'
+  // - projects from './data/projects'
+  // - skills from './data/skills'
 
   return (
     <div className="min-h-screen bg-black text-white">
